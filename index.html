@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão e Acessibilidade Digital</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header role="banner">
+        <h1>Acessibilidade Visual</h1>
+        <div class="controls" aria-label="Controles de Acessibilidade">
+            <button id="toggle-contrast" aria-label="Alternar Alto Contraste">Alto Contraste</button>
+            <button id="decrease-font" aria-label="Diminuir tamanho do texto">A-</button>
+            <button id="increase-font" aria-label="Aumentar tamanho do texto">A+</button>
+        </div>
+    </header>
+
+    <main role="main">
+        <section aria-labelledby="intro-title">
+            <h2 id="intro-title">A Importância da Visão na Web</h2>
+            <p>A acessibilidade web garante que pessoas com deficiência visual possam navegar na internet de forma autônoma e digna.</p>
+        </section>
+
+        <section aria-labelledby="tips-title">
+            <h2 id="tips-title">Práticas Essenciais</h2>
+            <ul>
+                <li>Texto alternativo (alt) em todas as imagens de conteúdo.</li>
+                <li>Contraste adequado entre a cor do texto e o fundo.</li>
+                <li>Navegação total por meio do teclado.</li>
+                <li>Uso de tags HTML semânticas para leitores de tela.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 - Desenvolvido com foco em acessibilidade universal.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

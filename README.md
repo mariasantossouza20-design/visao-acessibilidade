@@ -134,3 +134,119 @@ decreaseFontBtn.addEventListener('click', () => {
         document.body.style.fontSize = `${currentFontSize}%`;
     }
 });
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visão & Acessibilidade</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #111;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #0056b3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background: #0056b3;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #003d80;
+        }
+
+        .alto-contraste {
+            background: black;
+            color: yellow;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Visão & Acessibilidade</h1>
+    <p>Exemplo de página acessível para pessoas com deficiência visual.</p>
+</header>
+
+<main>
+    <h2>Recursos de Acessibilidade</h2>
+
+    <ul>
+        <li>✔ Alto contraste</li>
+        <li>✔ Texto legível</li>
+        <li>✔ Navegação por teclado</li>
+        <li>✔ Estrutura semântica em HTML</li>
+    </ul>
+
+    <button onclick="alternarContraste()">
+        Alternar Alto Contraste
+    </button>
+
+    <p>
+        A acessibilidade digital permite que todas as pessoas utilizem
+        sites e sistemas com autonomia, independentemente de suas limitações.
+    </p>
+</main>
+
+<footer>
+    Desenvolvido para demonstração de acessibilidade.
+</footer>
+
+<script>
+function alternarContraste() {
+    document.body.classList.toggle("alto-contraste");
+}
+</script>
+
+</body>
+</html>
+# Visão & Acessibilidade
+
+Projeto simples em HTML, CSS e JavaScript para demonstrar recursos básicos de acessibilidade.
+
+## Funcionalidades
+
+- Alto contraste
+- HTML semântico
+- Layout responsivo
+- Fácil navegação
+
+## Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript
+- git init
+git add .
+git commit -m "Projeto Visão e Acessibilidade"
+git branch -M main
+git remote add origin https://github.com/SEU-USUARIO/visao-acessibilidade.git
+git push -u origin main

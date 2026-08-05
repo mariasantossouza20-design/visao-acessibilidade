@@ -1,58 +1,152 @@
 <!DOCTYPE html>
-<html lang="pt-BR"<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Visão Java HTML</title>
-</head>
-<body>
-    <h1>Sistema de Visão Java</h1>
-    <form action="processar" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome">
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
->
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão e Acessibilidade Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simulador de Acessibilidade Visual com Imagem</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1e293b;
+            --accent: #2563eb;
+            --border: #cbd5e1;
+        }
+
+        /* Filtros de Daltonismo aplicados na imagem */
+        .protanopia img { filter: url('#protanopia-filter'); }
+        .deuteranopia img { filter: url('#deuteranopia-filter'); }
+        .tritanopia img { filter: url('#tritanopia-filter'); }
+        .low-vision img { filter: blur(6px); }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .upload-zone {
+            border: 3px dashed var(--border);
+            padding: 2rem;
+            border-radius: 1rem;
+            background: #f8fafc;
+            cursor: pointer;
+            margin: 1.5rem 0;
+            transition: border-color 0.2s;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--accent);
+        }
+
+        select {
+            padding: 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+
+        .preview-box {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .preview-box img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        input[type="file"] { display: none; }
+    </style>
 </head>
 <body>
 
-    <header role="banner">
-        <h1>Acessibilidade Visual</h1>
-        <div class="controls" aria-label="Controles de Acessibilidade">
-            <button id="toggle-contrast" aria-label="Alternar Alto Contraste">Alto Contraste</button>
-            <button id="decrease-font" aria-label="Diminuir tamanho do texto">A-</button>
-            <button id="increase-font" aria-label="Aumentar tamanho do texto">A+</button>
-        </div>
-    </header>
+<!-- Matrizes SVG para simulação real de Daltonismo -->
+<svg style="position: absolute; width: 0; height: 0;">
+    <defs>
+        <filter id="protanopia-filter">
+            <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/>
+        </filter>
+        <filter id="deuteranopia-filter">
+            <feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0, 0.7, 0.3, 0, 0, 0, 0, 0.3, 0.7, 0, 0, 0, 0, 0, 1, 0"/>
+        </filter>
+        <filter id="tritanopia-filter">
+            <feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0, 0, 0.433, 0.567, 0, 0, 0, 0.475, 0.525, 0, 0, 0, 0, 0, 1, 0"/>
+        </filter>
+    </defs>
+</svg>
 
-    <main role="main">
-        <section aria-labelledby="intro-title">
-            <h2 id="intro-title">A Importância da Visão na Web</h2>
-            <p>A acessibilidade web garante que pessoas com deficiência visual possam navegar na internet de forma autônoma e digna.</p>
-        </section>
+<div class="container">
+    <h1>Simulador de Daltonismo em Imagens</h1>
+    <p>Suba uma foto para testar o contraste e as cores do seu layout.</p>
 
-        <section aria-labelledby="tips-title">
-            <h2 id="tips-title">Práticas Essenciais</h2>
-            <ul>
-                <li>Texto alternativo (alt) em todas as imagens de conteúdo.</li>
-                <li>Contraste adequado entre a cor do texto e o fundo.</li>
-                <li>Navegação total por meio do teclado.</li>
-                <li>Uso de tags HTML semânticas para leitores de tela.</li>
-            </ul>
-        </section>
-    </main>
+    <!-- Área de Upload -->
+    <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+        <p>Clique aqui para selecionar ou arraste uma imagem</p>
+        <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
+    </div>
 
-    <footer role="contentinfo">
-        <p>&copy; 2026 - Desenvolvido com foco em acessibilidade universal.</p>
-    </footer>
+    <!-- Seletor de Filtros -->
+    <label for="filterSelect" style="display:block; margin-bottom:0.5rem; font-weight:bold;">Escolha a condição visual:</label>
+    <select id="filterSelect" onchange="applyFilter(this.value)">
+        <option value="normal">Visão Padrão (Sem filtro)</option>
+        <option value="protanopia">Protanopia (Incapacidade de ver o Vermelho)</option>
+        <option value="deuteranopia">Deuteranopia (Incapacidade de ver o Verde)</option>
+        <option value="tritanopia">Tritanopia (Incapacidade de ver o Azul)</option>
+        <option value="low-vision">Baixa Visão / Visão Borrada</option>
+    </select>
 
-    <script src="script.js"></script>
+    <!-- Exibição da Imagem -->
+    <div class="preview-box" id="previewBox">
+        <img id="userImage" src="" alt="Sua imagem de teste">
+    </div>
+</div>
+
+<script>
+    // Carrega a imagem do computador do usuário para a tela
+    function loadImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.getElementById('userImage');
+                img.src = e.target.result;
+                document.getElementById('previewBox').style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // Aplica a classe de filtro diretamente na div que segura a imagem
+    function applyFilter(filterType) {
+        const previewBox = document.getElementById('previewBox');
+        
+        // Limpa filtros antigos
+        previewBox.className = "preview-box"; 
+        
+        // Adiciona o novo se não for a visão normal
+        if (filterType !== 'normal') {
+            previewBox.classList.add(filterType);
+        }
+    }
+</script>
+
 </body>
 </html>

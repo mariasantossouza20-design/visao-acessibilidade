@@ -110,6 +110,104 @@ footer {
     border-top: 1px solid var(--text-color);
 }
 script.js
+/* Configurações Globais */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --header-bg: #0056b3;
+    --header-text: #ffffff;
+    --btn-bg: #e2e6ea;
+    --btn-text: #212529;
+    font-size: 100%; /* Define o tamanho base (16px) */
+}
+
+/* Modo Alto Contraste */
+body.high-contrast {
+    --bg-color: #000000;
+    --text-color: #ffff00;
+    --header-bg: #000000;
+    --header-text: #ffff00;
+    --btn-bg: #ffff00;
+    --btn-text: #000000;
+}
+
+/* Aplicação dos Estilos */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+h1, h2 {
+    margin: 0 0 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+p, li {
+    font-size: 1.1rem;
+}
+
+ul {
+    padding-left: 1.5rem;
+}
+
+/* Botões de Controle */
+.controls button {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 2px solid var(--text-color);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.1s;
+}
+
+.controls button:hover {
+    filter: brightness(90%);
+}
+
+.controls button:active {
+    transform: scale(0.95);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid var(--text-color);
+    margin-top: 4rem;
+}
+
 // Controle de Alto Contraste
 const toggleContrastBtn = document.getElementById('toggle-contrast');
 toggleContrastBtn.addEventListener('click', () => {

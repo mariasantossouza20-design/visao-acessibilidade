@@ -1,4 +1,16 @@
 # visao-acessibilidade
+<p align="center">
+  <img src="https://vercel.app" alt="Banner de Boas-vindas" />
+</p>
+
+<h2 align="center">👋 Boas-vindas ao meu espaço de projetos!</h2>
+
+---
+
+<p align="center">
+  <sub>© 2026. Todos os direitos reservados.</sub>
+</p>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -348,3 +360,10 @@ git commit -m "Projeto Visão e Acessibilidade"
 git branch -M main
 git remote add origin https://github.com/SEU-USUARIO/visao-acessibilidade.git
 git push -u origin main
+---
+<p align="center">
+  Desenvolvido com 💻 por <b>Seu Nome Aqui</b>
+</p>
+<p align="center">
+  <sub>© 2026. Todos os direitos reservados.</sub>
+</p>

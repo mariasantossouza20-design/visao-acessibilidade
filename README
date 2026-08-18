@@ -358,7 +358,7 @@ Projeto simples em HTML, CSS e JavaScript para demonstrar recursos básicos de a
 git add .
 git commit -m "Projeto Visão e Acessibilidade"
 git branch -M main
-git remote add origin https://github.com/SEU-USUARIO/visao-acessibilidade.git
+git remote add origin https://github.com/mariasantossouza20-design/visao-acessibilidade.git
 git push -u origin main
 ---
 <p align="center">

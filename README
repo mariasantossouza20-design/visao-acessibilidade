@@ -1,33 +1,16 @@
-<p align="center">
-  <img src="https://vercel.app" alt="Banner de Boas-vindas" />
-</p>
+### Visão & Acessibilidade
 
-<h2 align="center">👋 Boas-vindas ao meu espaço de projetos!</h2>
+Projeto desenvolvido em HTML, CSS e JavaScript para demonstrar recursos práticos e essenciais de acessibilidade digital na web. 
 
----
+### 🚀 Funcionalidades do Sistema
 
-# Visão & Acessibilidade
+* **Alto Contraste:** Alternância de cores para melhor leitura e visualização.
+* **Controle de Fonte:** Opções para aumentar (A+) e diminuir (A-) o tamanho dos textos.
+* **HTML Semântico:** Estrutura limpa que facilita o uso de leitores de tela por deficientes visuais.
+* **Navegação Prática:** Layout responsivo focado na autonomia do usuário.
 
-Projeto desenvolvido em HTML, CSS e JavaScript para demonstrar recursos práticos e essenciais de acessibilidade digital na web.
+### 🛠️ Tecnologias Utilizadas
 
-## 🚀 Funcionalidades do Sistema
-
-- **Alto Contraste:** Alternância de cores para melhor leitura e visualização.
-- **Controle de Fonte:** Opções para aumentar (A+) e diminuir (A-) o tamanho dos textos.
-- **HTML Semântico:** Estrutura limpa que facilita o uso de leitores de tela por deficientes visuais.
-- **Navegação Prática:** Layout responsivo focado na autonomia do usuário.
-
-## 🛠️ Tecnologias Utilizadas
-
-- HTML5 (Tags estruturais e semânticas)
-- CSS3 (Variáveis de ambiente e modo de contraste)
-- JavaScript (Manipulação dinâmica de fontes e estilos)
-
----
-
-<p align="center">
-  Desenvolvido com 💻 por <souza.m</b>
-</p>
-<p align="center">
-  <sub>© 2026. Todos os direitos reservados.</sub>
-</p>
+* **HTML5:** Tags estruturais e semânticas.
+* **CSS3:** Variáveis de ambiente e modo de contraste.
+* **JavaScript:** Manipulação dinâmica de fontes e estilos.

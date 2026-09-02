@@ -42,11 +42,12 @@
             background: #f8fafc;
             cursor: pointer;
             margin: 1.5rem 0;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, background-color 0.2s;
         }
 
-        .upload-zone:hover {
+        .upload-zone:hover, .upload-zone.dragover {
             border-color: var(--accent);
+            background-color: #f0fdf4;
         }
 
         select {
@@ -71,6 +72,7 @@
             max-width: 100%;
             height: auto;
             display: block;
+            margin: 0 auto;
         }
 
         input[type="file"] { display: none; }
@@ -79,7 +81,7 @@
 <body>
 
 <!-- Matrizes SVG para simulação real de Daltonismo -->
-<svg style="position: absolute; width: 0; height: 0;">
+<svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
     <defs>
         <filter id="protanopia-filter">
             <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0, 0.558, 0.442, 0, 0, 0, 0, 0.242, 0.758, 0, 0, 0, 0, 0, 1, 0"/>
@@ -98,7 +100,7 @@
     <p>Suba uma foto para testar o contraste e as cores do seu layout.</p>
 
     <!-- Área de Upload -->
-    <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+    <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
         <p>Clique aqui para selecionar ou arraste uma imagem</p>
         <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
     </div>
@@ -122,7 +124,7 @@
 <script>
     // Carrega a imagem do computador do usuário para a tela
     function loadImage(event) {
-        const file = event.target.files[0];
+        const file = event.target ? event.target.files[0] : event[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
@@ -144,3 +146,32 @@
         // Adiciona o novo se não for a visão normal
         if (filterType !== 'normal') {
             previewBox.classList.add(filterType);
+        }
+    }
+
+    // --- RECURSO ADICIONADO: Arrastar e soltar (Drag and Drop) ---
+    const dropZone = document.getElementById('dropZone');
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+        }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        loadImage(files);
+    }, false);
+</script>
+
+</body>
+</html>

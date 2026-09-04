@@ -1,117 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão & Acessibilidade</title>
-    <style>
-        /* Variáveis CSS para facilitar o Alto Contraste */
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #222223;
-            --header-bg: #f0f0f4;
-            --btn-bg: #0056b3;
-            --btn-text: #ffffff;
-        }
+# 👁️ Visão & Acessibilidade
 
-        [data-theme="dark"] {
-            --bg-color: #000000;
-            --text-color: #ffff00; /* Amarelo no preto garante altíssimo contraste */
-            --header-bg: #1a1a1a;
-            --btn-bg: #ffff00;
-            --btn-text: #000000;
-        }
+Projeto desenvolvido em HTML, CSS e JavaScript para demonstrar recursos práticos e essenciais de acessibilidade digital na web.
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
+O objetivo principal é garantir autonomia, inclusão e uma experiência de navegação confortável para todos os usuários, especialmente aqueles com limitações visuais ou motoras, seguindo boas práticas de diretrizes como eMAG e WCAG.
 
-        header {
-            background-color: var(--header-bg);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--text-color);
-        }
+## 🚀 Funcionalidades do Sistema
 
-        .controls button {
-            background-color: var(--btn-bg);
-            color: var(--btn-text);
-            border: 2px solid var(--text-color);
-            padding: 0.5rem 1rem;
-            margin-left: 0.5rem;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 1rem;
-        }
+*   **Alto Contraste:** Alternância dinâmica de cores (fundo preto com textos em amarelo/branco) que otimiza a leitura para usuários com baixa visão ou fotofobia.
+*   **Controle de Fonte:** Botões interativos para aumentar (`A+`) e diminuir (`A-`) o tamanho de todos os textos de forma proporcional, sem quebrar o layout.
+*   **HTML Semântico:** Estrutura limpa utilizando tags nativas (`<header>`, `<main>`, `<nav>`, `<footer >`, `<article>`) para facilitar a navegação por leitores de tela (como NVDA e JAWS).
+*   **Navegação Prática:** Layout responsivo focado na autonomia do usuário, incluindo links de salto ocultos ("Ir para o conteúdo principal") e foco visual aprimorado para navegação completa usando apenas o teclado (tecla `Tab`).
 
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-    </style>
-</head>
-<body>
+## 🛠️ Tecnologias Utilizadas
 
-    <!-- Link de salto para leitores de tela e navegação por teclado -->
-    <a href="#conteudo-principal" style="position: absolute; left: -10000px;">Ir para o conteúdo principal</a>
+*   **HTML5:** Estruturação semântica do conteúdo e atributos de acessibilidade (ARIA).
+*   **CSS3:** Variáveis de ambiente (`:root`) para gerenciamento do modo de contraste e estilização responsiva.
+*   **JavaScript:** Manipulação dinâmica do DOM para controle do tamanho de fontes e alternância de temas.
 
-    <header>
-        <h1>Visão & Acessibilidade</h1>
-        <div class="controls" role="toolbar" aria-label="Controles de Acessibilidade">
-            <button id="btn-alt-contraste" aria-label="Alternar alto contraste">Alto Contraste</button>
-            <button id="btn-aumentar" aria-label="Aumentar tamanho do texto">A+</button>
-            <button id="btn-diminuir" aria-label="Diminuir tamanho do texto">A-</button>
-        </div>
-    </header>
+## 💻 Como Executar o Projeto
 
-    <main id="conteudo-principal">
-        <article>
-            <h2>Demonstração de Recursos Práticos</h2>
-            <p class="texto-acessivel">Este projeto foi desenvolvido em HTML, CSS e JavaScript para demonstrar recursos essenciais de acessibilidade digital na web. Teste os botões acima utilizando o mouse ou a tecla Tab do seu teclado.</p>
-        </article>
-    </main>
+1. Baixe ou clone os arquivos deste repositório.
+2. Certifique-se de que o código unificado está salvo em um arquivo chamado `index.html`.
+3. Abra o arquivo `index.html` diretamente em qualquer navegador web moderno.
+4. Use os botões do cabeçalho ou navegue utilizando a tecla `Tab` para testar os recursos ativos.
 
-    <script>
-        // Funcionalidade 1: Alto Contraste
-        const btnContraste = document.getElementById('btn-alt-contraste');
-        btnContraste.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        });
-
-        // Funcionalidade 2: Controle de Fonte (A+ / A-)
-        let fontSizeAtual = 100; // Representa 100%
-        const limiteMax = 150;
-        const limiteMin = 80;
-        
-        const texto = document.querySelector('.texto-acessivel');
-
-        document.getElementById('btn-aumentar').addEventListener('click', () => {
-            if (fontSizeAtual < limiteMax) {
-                fontSizeAtual += 10;
-                texto.style.fontSize = `${fontSizeAtual}%`;
-            }
-        });
-
-        document.getElementById('btn-diminuir').addEventListener('click', () => {
-            if (fontSizeAtual > limiteMin) {
-                fontSizeAtual -= 10;
-                texto.style.fontSize = `${fontSizeAtual}%`;
-            }
-        });
-    </script>
-</body>
-</html>
+---
+Desenvolvido com foco em inclusão digital. ♿
